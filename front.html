@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The World in One Day · Tuesday 24 November 2026</title>
+  <style>
+    :root {
+      --paper: #fdfcf8;
+      --ink: #191815;
+      --red: #a00;
+      --rule: #cec7bc;
+      --serif: "DejaVu Serif", serif;
+      --sans: "Liberation Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { width: 1024px; height: 1024px; margin: 0; overflow: clip; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    h1, h2, h3, p { margin: 0; }
+
+    .front-page {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: 94px 193px 28px 125px minmax(0, 1fr) 27px;
+      gap: 6px;
+      width: 1024px;
+      height: 1024px;
+      padding: 20px 27px 16px;
+      overflow: clip;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-rows: 25px 1fr;
+      border-bottom: 3px double var(--ink);
+    }
+
+    .masthead-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .kicker {
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .edition-date { font-size: 17px; font-weight: 700; letter-spacing: .085em; }
+
+    .masthead h1 {
+      align-self: center;
+      text-align: center;
+      font: 700 57px/1 var(--serif);
+      letter-spacing: .038em;
+    }
+
+    .lead {
+      padding: 9px 18px 6px;
+      border-left: 4px solid #71828c;
+      background: #e8edf0;
+    }
+
+    .region {
+      color: var(--red);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .085em;
+      line-height: 11px;
+    }
+
+    .lead .region { margin-bottom: 4px; font-size: 11px; line-height: 12px; }
+
+    .lead h2 {
+      width: calc(100% / .94);
+      margin-bottom: 5px;
+      font: 700 58px/.93 var(--serif);
+      letter-spacing: -.047em;
+      transform: scaleX(.94);
+      transform-origin: left top;
+    }
+
+    .lead-deck { margin-bottom: 3px; font-size: 15px; font-weight: 700; line-height: 18px; }
+    .lead-body { max-width: 895px; font-size: 12px; line-height: 14px; }
+
+    .markets {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3px;
+      padding: 0 8px;
+      border-block: 1px solid var(--rule);
+      background: #f4f1e9;
+      font-size: 9px;
+      line-height: 12px;
+      letter-spacing: -.023em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .markets h2 {
+      padding-right: 8px;
+      border-right: 1px solid var(--rule);
+      font-size: inherit;
+      letter-spacing: .025em;
+    }
+
+    .market-up { color: #226447; font-weight: 700; }
+    .market-down { color: #a22124; font-weight: 700; }
+
+    .secondary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .secondary article {
+      display: grid;
+      grid-template-rows: 11px 44px 28px;
+      align-content: start;
+      row-gap: 6px;
+      padding: 8px 0 0;
+      border-top: 4px solid var(--red);
+    }
+
+    .secondary h3 { font: 700 20px/1.09 var(--serif); letter-spacing: -.045em; }
+
+    .secondary-deck {
+      --scale: .66;
+      width: calc(100% / var(--scale));
+      font-size: 10.5px;
+      line-height: 14px;
+      letter-spacing: -.18px;
+      text-wrap: balance;
+      transform: scaleX(var(--scale));
+      transform-origin: left top;
+    }
+
+    .secondary article:nth-child(2) .secondary-deck { --scale: .61; }
+    .secondary article:nth-child(3) .secondary-deck { --scale: .75; }
+
+    .briefs {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-rows: 39px;
+      grid-auto-rows: minmax(0, 1fr);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .brief {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding: 0 7px;
+      border-top: 1px solid var(--rule);
+      border-left: 1px solid var(--rule);
+    }
+
+    .brief:nth-child(3n + 1) { padding-left: 0; border-left: 0; }
+    .brief:nth-child(3n) { padding-right: 0; }
+    .brief:nth-child(-n + 3) { border-top: 2px solid var(--ink); }
+    .briefs.wide-last-row .brief:nth-last-child(-n + 2) { grid-column: span 3; }
+    .briefs.wide-last-row .brief:last-child { padding-right: 0; }
+
+    .brief h3 {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: -.037em;
+      white-space: nowrap;
+    }
+
+    .brief-deck { font-size: 11px; line-height: 11px; white-space: nowrap; }
+    .brief-deck span { display: inline-block; transform: scaleX(var(--scale, .92)); transform-origin: left; }
+
+    .footer {
+      display: grid;
+      place-content: center;
+      border-bottom: 4px solid var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .035em;
+    }
+  </style>
+</head>
+<body>
+  <main class="front-page">
+    <header class="masthead">
+      <div class="masthead-line">
+        <p class="kicker">ONE DAY, ONE PICTURE</p>
+        <p class="edition-date">TUESDAY 24 NOVEMBER 2026</p>
+      </div>
+      <h1>THE WORLD IN ONE DAY</h1>
+    </header>
+    <article class="lead">
+      <p class="region">GLOBAL / MARKETS</p>
+      <h2>HUANG IS BACK — <br>NVIDIA REINSTATES ITS CHIEF</h2>
+      <p class="lead-deck">Jensen Huang returns as CEO and chair less than two weeks after resigning, after Trump personally lobbied the board</p>
+      <p class="lead-body">Nvidia reinstated Jensen Huang as chief executive after President Trump said he 'made the deal' with the board; Vice-President Vance lobbied directors over the weekend. Markets surged: the Nasdaq jumped 6.51% and the S&amp;P 500 4.73% in their best day in over a year, Seoul rose more than 6% and Tokyo 3.91%.</p>
+    </article>
+    <section class="markets" aria-labelledby="markets-title">
+      <h2 id="markets-title">MARKETS — TUESDAY CLOSE</h2>
+      <p><strong>S&amp;P 500</strong> 7,237.17 <span class="market-up">+4.73%</span></p>
+      <p><strong>Nasdaq</strong> 24,089.56 <span class="market-up">+6.51%</span></p>
+      <p><strong>Nikkei 225</strong> 58,644.63 <span class="market-up">+3.91%</span></p>
+      <p><strong>KOSPI</strong> <span class="market-up">+6%</span></p>
+      <p><strong>FTSE 100</strong> 10,480.82 <span class="market-up">+1.30%</span></p>
+      <p><strong>Brent crude</strong> $86.70 <span class="market-down">−2.99%</span></p>
+      <p><strong>Gold</strong> $3,620.40 <span class="market-down">−0.85%</span></p>
+    </section>
+    <section class="secondary" aria-label="Secondary stories">
+      <article>
+        <p class="region">GLOBAL / CLIMATE</p>
+        <h3>COP31: THE FALLOUT</h3>
+        <p class="secondary-deck">The Antalya climate summit collapsed with no deal after more than 90 nations rejected a draft that never said 'fossil fuels' — talks ran nearly 50 hours past deadline in the longest summit ever.</p>
+      </article>
+      <article>
+        <p class="region">EUROPE / SPACE</p>
+        <h3>NATO VOWS TO DEFEND SPACE</h3>
+        <p class="secondary-deck">NATO chief Mark Rutte says the alliance will defend against any threat in space after reports Russia may put a nuclear weapon in orbit as soon as next month; Medvedev warns of a 'preventive nuclear attack'.</p>
+      </article>
+      <article>
+        <p class="region">MIDDLE EAST</p>
+        <h3>GAZA STRIKES KILL HAMAS SECURITY CHIEF</h3>
+        <p class="secondary-deck">Israeli airstrikes kill Hamas internal security director Naeem Abu Nahel and six others in Gaza; a UN report says the war has undone 77 years of human development.</p>
+      </article>
+    </section>
+    <section class="briefs wide-last-row" aria-label="News in brief">
+      <article class="brief">
+        <p class="region">MIDDLE EAST</p>
+        <h3>VANCE, RUBIO MEET QATAR PM ON IRAN</h3>
+        <p class="brief-deck" title="The VP and secretary of state meet Qatar's PM in separate White House talks amid ongoing Iran mediation."><span style="--scale: 0.604">The VP and secretary of state meet Qatar's PM in separate White House talks amid ongoing Iran mediation.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">MIDDLE EAST</p>
+        <h3>IRAN: WE'LL USE ALL TOOLS AGAINST BLOCKADE</h3>
+        <p class="brief-deck" title="Tehran calls the renewed US naval blockade 'military aggression' and demands the US meet seven terms for talks."><span style="--scale: 0.551">Tehran calls the renewed US naval blockade 'military aggression' and demands the US meet seven terms for talks.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">MIDDLE EAST</p>
+        <h3>IRAN FLOGS SINGER 74 LASHES</h3>
+        <p class="brief-deck" title="Officials confirm 74 lashes for singer Parastoo Ahmadi, the latest punishment of a prominent artist."><span style="--scale: 0.662">Officials confirm 74 lashes for singer Parastoo Ahmadi, the latest punishment of a prominent artist.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">MIDDLE EAST</p>
+        <h3>IRAQ PM SEIZES KURDISH-AREA OILFIELDS</h3>
+        <p class="brief-deck" title="After a smuggling probe, Baghdad orders its oil ministry to run oilfields under Kurdish security control."><span style="--scale: 0.644">After a smuggling probe, Baghdad orders its oil ministry to run oilfields under Kurdish security control.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">MIDDLE EAST</p>
+        <h3>LIBYA DEMANDS ANSWERS OVER BENGHAZI</h3>
+        <p class="brief-deck" title="Tripoli demands Kyiv's account of its drone strike on Russian ships as the UN urges an independent probe."><span style="--scale: 0.590">Tripoli demands Kyiv's account of its drone strike on Russian ships as the UN urges an independent probe.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">MIDDLE EAST</p>
+        <h3>OXFAM: GAZA NOW A 'TOXIC LAND'</h3>
+        <p class="brief-deck" title="Oxfam says war damage and contamination have turned Gaza into toxic land."><span style="--scale: 0.831">Oxfam says war damage and contamination have turned Gaza into toxic land.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>ZAPORIZHZHIA: 2 DEAD, 40 WOUNDED</h3>
+        <p class="brief-deck" title="Russia hits a Zaporizhzhia apartment block overnight, killing two and wounding 40, including four children."><span style="--scale: 0.617">Russia hits a Zaporizhzhia apartment block overnight, killing two and wounding 40, including four children.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>POLAND: PEACE WON'T END SABOTAGE</h3>
+        <p class="brief-deck" title="Poland's spy chief warns a Ukraine peace deal won't end Russia's sabotage campaign against Europe."><span style="--scale: 0.615">Poland's spy chief warns a Ukraine peace deal won't end Russia's sabotage campaign against Europe.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>LATVIA: WAR MAY HIT TIPPING POINT</h3>
+        <p class="brief-deck" title="Latvia's President Rinkevics says next year could tip the war toward Russia's defeat if pressure holds."><span style="--scale: 0.631">Latvia's President Rinkevics says next year could tip the war toward Russia's defeat if pressure holds.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>GERMANY FIRST INTO UKRAINE'S DELTA</h3>
+        <p class="brief-deck" title="Germany gains first access to Ukraine's Delta battlefield system and agrees on interceptor missiles."><span style="--scale: 0.649">Germany gains first access to Ukraine's Delta battlefield system and agrees on interceptor missiles.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>7 NATIONS BACK CURBS ON RUSSIAN VISAS</h3>
+        <p class="brief-deck" title="Seven nations back proposed EU curbs on Russian travel into the bloc, especially for sport."><span style="--scale: 0.689">Seven nations back proposed EU curbs on Russian travel into the bloc, especially for sport.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>ZELENSKY URGES NATO TO ADMIT UKRAINE</h3>
+        <p class="brief-deck" title="Ukraine's president urges NATO to admit his country at the alliance's Berlin assembly."><span style="--scale: 0.69">Ukraine's president urges NATO to admit his country at the alliance's Berlin assembly.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>RUSSIA REJECTS ARTICLE 5 GUARANTEES</h3>
+        <p class="brief-deck" title="Moscow rejects NATO-style security guarantees for Kyiv, with Putin reportedly open only if NATO sends no troops."><span style="--scale: 0.565">Moscow rejects NATO-style security guarantees for Kyiv, with Putin reportedly open only if NATO sends no troops.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>SANOFI BUYS INSMED FOR $41BN</h3>
+        <p class="brief-deck" title="France's Sanofi agrees to buy US firm Insmed in biotech's biggest deal in nearly three years."><span style="--scale: 0.683">France's Sanofi agrees to buy US firm Insmed in biotech's biggest deal in nearly three years.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EUROPE</p>
+        <h3>MACRON WANTS RARE-EARTH RESERVES</h3>
+        <p class="brief-deck" title="France's president urges strategic rare-earth reserves as supply fears grow."><span style="--scale: 0.78">France's president urges strategic rare-earth reserves as supply fears grow.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EAST ASIA</p>
+        <h3>RUSSIAN JETS ENTER KOREA ZONE</h3>
+        <p class="brief-deck" title="Several Russian aircraft enter South Korea's air defence identification zone between Korea and Japan."><span style="--scale: 0.634">Several Russian aircraft enter South Korea's air defence identification zone between Korea and Japan.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EAST ASIA</p>
+        <h3>KOREA PAYS $375K TO CATCH AI CHEATS</h3>
+        <p class="brief-deck" title="Seoul offers up to $375,000 for tips on students cheating with AI on the college entrance exam."><span style="--scale: 0.671">Seoul offers up to $375,000 for tips on students cheating with AI on the college entrance exam.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EAST ASIA</p>
+        <h3>CHINA OPENS STATION TO PAKISTAN</h3>
+        <p class="brief-deck" title="China opens its Tiangong station to its first foreign astronaut, Pakistan's Zeeshan Ali, on Shenzhou-24."><span style="--scale: 0.634">China opens its Tiangong station to its first foreign astronaut, Pakistan's Zeeshan Ali, on Shenzhou-24.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EAST ASIA</p>
+        <h3>US BLACKLISTS SINGAPORE CLOUD FIRM</h3>
+        <p class="brief-deck" title="The US blacklists Megaspeed International over the risk of computing chips reaching unauthorised users."><span style="--scale: 0.616">The US blacklists Megaspeed International over the risk of computing chips reaching unauthorised users.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EAST ASIA</p>
+        <h3>CHINA AI CAMPAIGN TARGETS TAIWAN VOTE</h3>
+        <p class="brief-deck" title="Researchers find a coordinated Chinese social campaign using AI to sway Taiwan's coming elections."><span style="--scale: 0.623">Researchers find a coordinated Chinese social campaign using AI to sway Taiwan's coming elections.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EAST ASIA</p>
+        <h3>JAPAN TO PAY ICC EARLY AND IN FULL</h3>
+        <p class="brief-deck" title="PM Takaichi says Japan will pay its full 2027 ICC dues by year-end, ahead of US sanctions."><span style="--scale: 0.705">PM Takaichi says Japan will pay its full 2027 ICC dues by year-end, ahead of US sanctions.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">EAST ASIA</p>
+        <h3>NEPAL QUAKE 5.6 NEAR CHINA BORDER</h3>
+        <p class="brief-deck" title="A 5.6-magnitude quake hits Nepal near the Chinese border."><span>A 5.6-magnitude quake hits Nepal near the Chinese border.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">AFRICA</p>
+        <h3>FIGHTING TRAPS EBOLA TEAMS IN CONGO</h3>
+        <p class="brief-deck" title="The WHO says heavy fighting in Ituri forces trapped Ebola crews to take cover for over 24 hours."><span style="--scale: 0.648">The WHO says heavy fighting in Ituri forces trapped Ebola crews to take cover for over 24 hours.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">AFRICA</p>
+        <h3>AMNESTY: TIGRAY STRIKES MAY BE WAR CRIMES</h3>
+        <p class="brief-deck" title="Amnesty urges a probe of artillery strikes on Tigray towns as possible war crimes."><span style="--scale: 0.72">Amnesty urges a probe of artillery strikes on Tigray towns as possible war crimes.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">SOUTH ASIA</p>
+        <h3>HASINA PLANS RETURN ON 16 DECEMBER</h3>
+        <p class="brief-deck" title="Exiled ex-PM Sheikh Hasina plans a 16 Dec return to Bangladesh as Dhaka vows to bring her back in handcuffs."><span style="--scale: 0.575">Exiled ex-PM Sheikh Hasina plans a 16 Dec return to Bangladesh as Dhaka vows to bring her back in handcuffs.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">NORTH AMERICA</p>
+        <h3>US LOSES MEASLES-FREE STATUS</h3>
+        <p class="brief-deck" title="The US loses measles elimination status after over 25 years as Pennsylvania records a ninth death."><span style="--scale: 0.632">The US loses measles elimination status after over 25 years as Pennsylvania records a ninth death.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">NORTH AMERICA</p>
+        <h3>PENTAGON: CANADA FALLING SHORT</h3>
+        <p class="brief-deck" title="The Pentagon says Canada falls short as a credible partner in North America's defence."><span style="--scale: 0.67">The Pentagon says Canada falls short as a credible partner in North America's defence.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">NORTH AMERICA</p>
+        <h3>SENATE PROBES VANCE OIL DEAL ROLE</h3>
+        <p class="brief-deck" title="The Senate probes whether the VP helped donor-linked Vitol win a Venezuelan oil deal."><span style="--scale: 0.63">The Senate probes whether the VP helped donor-linked Vitol win a Venezuelan oil deal.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">NORTH AMERICA</p>
+        <h3>TRUMP: SPEED UP DEATH SENTENCES</h3>
+        <p class="brief-deck" title="Trump says he'll order the DOJ to speed federal death sentences, including for child murderers."><span style="--scale: 0.660">Trump says he'll order the DOJ to speed federal death sentences, including for child murderers.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">NORTH AMERICA</p>
+        <h3>HUSH-MONEY CASE CAN GO FEDERAL</h3>
+        <p class="brief-deck" title="An appeals court reopens a route for Trump's 2024 felony conviction to move to federal court."><span style="--scale: 0.69">An appeals court reopens a route for Trump's 2024 felony conviction to move to federal court.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">NORTH AMERICA</p>
+        <h3>REP. GOMEZ TO RESIGN OVER ETHICS</h3>
+        <p class="brief-deck" title="Jimmy Gomez says he'll quit Congress after its ethics panel found 'substantial evidence' of sexual misconduct."><span style="--scale: 0.587">Jimmy Gomez says he'll quit Congress after its ethics panel found 'substantial evidence' of sexual misconduct.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">NORTH AMERICA</p>
+        <h3>FBI DEPUTY DIRECTOR TO RETIRE</h3>
+        <p class="brief-deck" title="FBI deputy director Christopher Raia plans to retire by year-end, the third deputy to leave in a year."><span style="--scale: 0.640">FBI deputy director Christopher Raia plans to retire by year-end, the third deputy to leave in a year.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">GLOBAL</p>
+        <h3>GUTERRES URGES AI SAFETY TALKS</h3>
+        <p class="brief-deck" title="The UN chief urges talks on global AI safety rules within a year, warning of a historic power shift."><span style="--scale: 0.675">The UN chief urges talks on global AI safety rules within a year, warning of a historic power shift.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">GLOBAL</p>
+        <h3>STATES SUE MUSK OVER GROK IMAGES</h3>
+        <p class="brief-deck" title="US states sue Musk's firms over sexualised images generated by the Grok chatbot."><span style="--scale: 0.772">US states sue Musk's firms over sexualised images generated by the Grok chatbot.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">GLOBAL</p>
+        <h3>FDA APPROVES FIRST MUSCLE DRUG</h3>
+        <p class="brief-deck" title="US regulators clear the first drug for limb-girdle muscular dystrophy."><span style="--scale: 0.89">US regulators clear the first drug for limb-girdle muscular dystrophy.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">LATIN AMERICA</p>
+        <h3>MEXICO TO TRY 'EL CHAPO ISIDRO'</h3>
+        <p class="brief-deck" title="Mexico says it will try cartel boss Fausto Isidro Meza Flores at home despite a US extradition bid."><span style="--scale: 0.665">Mexico says it will try cartel boss Fausto Isidro Meza Flores at home despite a US extradition bid.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">LATIN AMERICA</p>
+        <h3>CAR BOMB ROCKS VILLAVICENCIO</h3>
+        <p class="brief-deck" title="A car bomb wrecks buildings in Colombia's Villavicencio, with no confirmed victims."><span>A car bomb wrecks buildings in Colombia's Villavicencio, with no confirmed victims.</span></p>
+      </article>
+      <article class="brief">
+        <p class="region">OCEANIA</p>
+        <h3>AUSTRALIA TO FINE TECH UP TO 5%</h3>
+        <p class="brief-deck" title="Canberra agrees on a new digital duty of care, with tech firms facing fines up to 5% of global revenue."><span>Canberra agrees on a new digital duty of care, with tech firms facing fines up to 5% of global revenue.</span></p>
+      </article>
+    </section>
+    <footer class="footer">
+      <p>42 stories · 9 regions · All verified against wire reporting of Tuesday 24 November 2026</p>
+    </footer>
+  </main>
+</body>
+</html>
